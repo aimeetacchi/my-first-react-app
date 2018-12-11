@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "firstName": "Aimee",
+        "lastName": "Tacchi",
+        "email": "aimeet@gmail.com",
+        "hobbies": "Travel, Photograhpy, Swimming"
+    },
+    {
+        "id": 2,
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "jdoe@gmail.com",
+        "hobbies": "Cooking, Painting, Playing Football"
+    },
+    {
+        "id": 3,
+        "firstName": "Carl",
+        "lastName": "Black",
+        "email": "cblack@gmail.com",
+        "hobbies": "Hiking, Reading, Swimming"
+    },
+    {
+        "id": 4,
+        "firstName": "Gareth",
+        "lastName": "Wells",
+        "email": "gwells@gmail.com",
+        "hobbies": "Travel, Motor Racing, Reading"
+    }
+]

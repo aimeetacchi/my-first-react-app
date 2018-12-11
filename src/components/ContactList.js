@@ -1,35 +1,39 @@
 // This is the Contact List and Add Contact Component, Can split later...
 
 import React from 'react';
+import axios from 'axios';
 
 class ContactList extends React.Component {
     constructor(props){
         super()
-        this.handleData = this.handleData.bind(this);
-        this.state = 
-            [
-                {
-                    firstName: 'Aimee',
-                    lastName: 'Tacchi',
-                    email: 'aimeetacchi@gmail.com',
-                    hobbies: ['photography', 'drawing', 'travel', 'swimming']
-                },
-                {
-                    firstName: 'Claire',
-                    lastName: 'Tacchi',
-                    email: 'clairetacchi@gmail.com',
-                    hobbies: ['photography', 'craft', 'horses', 'swimming']
-                },
-            ]
+        this.submitNewContact = this.submitNewContact.bind(this);
+        this.state = {
+            data: []
+        }
     }
 
-    handleData(data){
-		this.setState({
-			firstName: data
-		});
-	}
+    // Lifecyle method - runs after component did mount, does a get request to the JSON Data, Fake API... and puts it into the State.
+    componentDidMount(){
+        console.log('component did mount...')
+        axios.get(`http://localhost:3000/data.json`)
+        .then(res => {
+            const data = res.data;
+            this.setState({ data });
+        })
+    }
 
-    
+    // submit function getting the values from the inputted fields.
+    submitNewContact(e){
+        e.preventDefault();
+        const formData = {};
+        for(const field in this.refs){
+            formData[field] = this.refs[field].value
+        }
+        console.log(formData);
+        this.state.data.push(formData);
+        this.refs.submitnewContact.reset();
+        console.log(this.state);
+    }
 
     render(){
         // Inline Styles
@@ -42,16 +46,15 @@ class ContactList extends React.Component {
         };
 
         
-
         return (
             <div>
                 {/* // This can be a component later ---- ContactsList */}
                 <div style={ContactListStyles} id="contactList">
                     <h2>Contact List</h2>
                     
-                    {/* // Loop through contacts ---- */}
+                    {/* // Loop through contacts from state ---- */}
 
-                    {this.state.map((contact, i) => 
+                    {this.state.data.map((contact, i) => 
                         <div key={i} className="card">
                             <ul className="card-list">
                                 <li>First Name: {contact.firstName}</li>
@@ -68,22 +71,26 @@ class ContactList extends React.Component {
                 {/* // This could be a Add Contact Component Later -- */}
                 <div style={AddContactStyles}>
                     <h2>Add Contact Component</h2>
-                    <form>
+                    <form onSubmit={this.submitNewContact} ref="submitnewContact">
                         <div className="form-input">
                             <label htmlFor="firstname">First Name:</label>
-                            <input type="text" name="firstname" placeholder="First Name"/>
+                            <input type="text" name="firstname" placeholder="First Name"
+                            ref="firstName"/>
                         </div>
                         <div className="form-input">
                             <label htmlFor="lastname">Last Name:</label>
-                            <input type="text" name="lastname" placeholder="Last Name"/>
+                            <input type="text" name="lastname" placeholder="Last Name"
+                            ref="lastName"/>
                         </div>
                         <div className="form-input">
                             <label htmlFor="email">Email:</label>
-                            <input type="email" name="email" placeholder="Email"/>
+                            <input type="email" name="email" placeholder="Email"
+                            ref="email"/>
                         </div>
                         <div className="form-input">
                             <label htmlFor="hobbies">Hobbies:</label>
-                            <input type="text" name="hobbies" placeholder="Hobbies..."/>
+                            <input type="text" name="hobbies" placeholder="Hobbies..."
+                            ref="hobbies"/>
                         </div>
                         <input type="submit" value="Add Contact"/>
                     </form>
