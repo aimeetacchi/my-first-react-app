@@ -71,6 +71,8 @@ class ContactList extends React.Component {
                 {/* // This could be a Add Contact Component Later -- */}
                 <div style={AddContactStyles}>
                     <h2>Add Contact Component</h2>
+
+                    // uncontrolled component form
                     <form onSubmit={this.submitNewContact} ref="submitnewContact">
                         <div className="form-input">
                             <label htmlFor="firstname">First Name:</label>
