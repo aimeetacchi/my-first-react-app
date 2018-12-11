@@ -20,8 +20,15 @@ class AddContact extends React.Component {
             <div style={AddContactStyles}>
                 <h2>Update Contact Component</h2>
                 <form>
-                    <label>Update FirstName:</label>
-                    <input/>
+                    <div className="form-input">
+                        <label htmlFor="firstname">First Name:</label>
+                        <input type="text" name="firstname" placeholder="First Name"/>
+                    </div>
+                    <div className="form-input">
+                        <label htmlFor="lastname">Last Name:</label>
+                        <input type="text" name="lastname" placeholder="Last Name"/>
+                    </div>
+                    <input type="submit" value="Add Contact"/>
                 </form>
             </div>
         )
