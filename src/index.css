@@ -10,6 +10,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+nav {
+  background-color: #17151d;
+}
+nav ul {
+  font-size: 18px;
+  text-transform: uppercase;
+  list-style: none;
+  display:flex;
+  justify-content: center;
+}
+nav ul li {
+  padding: 1em;
+}
+a {
+  color: #f1f1f1;
+  transition: all .5s ease-out;
+  font-weight: 700;
+}
+a:hover {
+  color: #c7c6c6
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -17,5 +38,19 @@ code {
 
 .App {
   text-align: center;
+}
+.card {
+  background-color: #303030;
+  padding: 1em;
+  width: 50%;
+  margin: 1em auto;
+}
+.card-list {
+  list-style: none;
+  margin: 0;
+  padding: 2em 0;
+}
+.card-list li {
+  padding: .5em 0;
 }
 

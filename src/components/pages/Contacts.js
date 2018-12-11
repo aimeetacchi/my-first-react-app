@@ -1,7 +1,10 @@
+// PAGE --- BASICALLY HOME PAGE ==
+
 import React from 'react';
-import AddContact from '../AddContact';
+import ContactList from '../ContactList';
 
 class Home extends React.Component {
+
 
 
     render(){
@@ -12,7 +15,7 @@ class Home extends React.Component {
         return (
             <div style={contactsStyles}>
                 <h1>This is the Home/Contacts Component/Page</h1>
-                <AddContact />
+                <ContactList />
             </div>
             
         )
