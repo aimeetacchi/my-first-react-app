@@ -6,12 +6,21 @@ class ContactList extends React.Component {
     constructor(props){
         super()
         this.handleData = this.handleData.bind(this);
-        this.state = {
-            firstName: 'Aimee',
-            lastName: 'Tacchi',
-            email: 'aimeetacchi@gmail.com',
-            hobbies: ['photography', 'drawing', 'travel', 'swimming']
-        }
+        this.state = 
+            [
+                {
+                    firstName: 'Aimee',
+                    lastName: 'Tacchi',
+                    email: 'aimeetacchi@gmail.com',
+                    hobbies: ['photography', 'drawing', 'travel', 'swimming']
+                },
+                {
+                    firstName: 'Claire',
+                    lastName: 'Tacchi',
+                    email: 'clairetacchi@gmail.com',
+                    hobbies: ['photography', 'craft', 'horses', 'swimming']
+                },
+            ]
     }
 
     handleData(data){
@@ -27,7 +36,7 @@ class ContactList extends React.Component {
         let ContactListStyles = {
             border: '1px dashed blue'
         }
-        
+
         let AddContactStyles = {
             border: '1px dashed red'
         };
@@ -39,15 +48,20 @@ class ContactList extends React.Component {
                 {/* // This can be a component later ---- ContactsList */}
                 <div style={ContactListStyles} id="contactList">
                     <h2>Contact List</h2>
+                    
                     {/* // Loop through contacts ---- */}
-                    <div className="card">
-                        <ul className="card-list">
-                            <li>First Name: {this.state.firstName}</li>
-                            <li>Last Name: {this.state.lastName} </li>
-                            <li>Email:  {this.state.email}</li>
-                            <li>Hobbies:{this.state.hobbies}</li>
-                        </ul>
-                    </div>
+
+                    {this.state.map((contact, i) => 
+                        <div key={i} className="card">
+                            <ul className="card-list">
+                                <li>First Name: {contact.firstName}</li>
+                                <li>Last Name: {contact.lastName} </li>
+                                <li>Email:  {contact.email}</li>
+                                <li>Hobbies:{contact.hobbies}</li>
+                            </ul>
+                        </div>
+                    )}
+                    
                 
                 </div>
                 
@@ -62,6 +76,14 @@ class ContactList extends React.Component {
                         <div className="form-input">
                             <label htmlFor="lastname">Last Name:</label>
                             <input type="text" name="lastname" placeholder="Last Name"/>
+                        </div>
+                        <div className="form-input">
+                            <label htmlFor="email">Email:</label>
+                            <input type="email" name="email" placeholder="Email"/>
+                        </div>
+                        <div className="form-input">
+                            <label htmlFor="hobbies">Hobbies:</label>
+                            <input type="text" name="hobbies" placeholder="Hobbies..."/>
                         </div>
                         <input type="submit" value="Add Contact"/>
                     </form>
